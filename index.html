@@ -3,114 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Company Landing Page</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-        
-        .container {
-            text-align: center;
-            max-width: 800px;
-            padding: 40px;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-        
-        .container:hover {
-            transform: translateY(-5px);
-        }
-        
-        .logo {
-            width: 180px;
-            height: 120px;
-            margin: 0 auto 30px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .logo img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-        }
-        
-        h1 {
-            font-size: 2.8rem;
-            color: #2c3e50;
-            margin-bottom: 20px;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-        }
-        
-        p {
-            font-size: 1.2rem;
-            color: #7f8c8d;
-            line-height: 1.6;
-            margin-bottom: 35px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .button {
-            display: inline-block;
-            padding: 16px 40px;
-            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(37, 117, 252, 0.4);
-        }
-        
-        .button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(37, 117, 252, 0.6);
-        }
-        
-        .button:active {
-            transform: translateY(1px);
-        }
-        
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 2.2rem;
-            }
-            
-            p {
-                font-size: 1rem;
-            }
-            
-            .container {
-                padding: 30px 20px;
-            }
-            
-            .logo {
-                width: 150px;
-                height: 100px;
-            }
-        }
-    </style>
+    <title>Portfolio Test Report</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="MFTICONBLU.ico">
 </head>
 <body>
     <div class="container">
@@ -120,6 +15,18 @@
         <h1>The Portfolio Test Report</h1>
         <p>Here you can find the test automation report for My Portfolio.</p>
         <a href="test-output/html/index.html" class="button">View TestNG Report</a>
+        <p id="timestamp"></p>
     </div>
+
+    <script>
+        fetch("test-output/run_timestamp.txt")
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("timestamp").textContent = "Last Updated: " + data.trim();
+            })
+            .catch(() => {
+                document.getElementById("timestamp").textContent = "Timestamp not available";
+            });
+    </script>
 </body>
 </html>
